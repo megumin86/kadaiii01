@@ -1,0 +1,54 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>じゃんけんアプリ</title>
+  <style>
+    button {
+      font-size: 24px;
+      margin: 8px;
+      padding: 16px;
+    }
+</style>
+</head>
+<body>
+    <h1>じゃんけんアプリ</h1>
+    <div>
+      <button id="rock-btn">グー</button>
+      <button id="scissors-btn">チョキ</button>
+      <button id="paper-btn">パー</button>
+    </div>
+    <div id="result"></div>
+    <script>
+const ROCK = "グー";
+    const SCISSORS = "チョキ";
+    const PAPER = "パー";
+    function judge(playerHand, computerHand) {
+      if(playerHand === computerHand) {
+        return "引き分け";
+      } else if((playerHand === ROCK && computerHand === SCISSORS) ||
+                (playerHand === SCISSORS && computerHand === PAPER) ||
+                (playerHand === PAPER && computerHand === ROCK)) {
+        return "勝ち";
+      } else {
+        return "負け";
+      }
+    }
+    document.getElementById("rock-btn").addEventListener("click", function() {
+      let computerHand = [ROCK, SCISSORS, PAPER][Math.floor(Math.random() * 3)];
+      let result = judge(ROCK, computerHand);
+      document.getElementById("result").textContent = `あなたの手: ${ROCK}, コンピューターの手: ${computerHand}\n結果: ${result}`;
+    });
+    
+    document.getElementById("scissors-btn").addEventListener("click", function() {
+      let computerHand = [ROCK, SCISSORS, PAPER][Math.floor(Math.random() * 3)];
+      let result = judge(SCISSORS, computerHand);
+      document.getElementById("result").textContent = `あなたの手: ${SCISSORS}, コンピューターの手: ${computerHand}\n結果: ${result}`;
+    });
+    document.getElementById("paper-btn").addEventListener("click", function() {
+      let computerHand = [ROCK, SCISSORS, PAPER][Math.floor(Math.random() * 3)];
+      let result = judge(PAPER, computerHand);
+      document.getElementById("result").textContent = `あなたの手: ${PAPER}, コンピューターの手: ${computerHand}\n結果: ${result}`;
+    });
+  </script>
+</body>
+</html>   
